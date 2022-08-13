@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Book = ({ bookTitle, authors, bookCover, handlerOnchange }) => {
+const Book = ({ bookTitle, authors, bookCover, handlerOnchange, book }) => {
   return (
     <div className="book">
       <div className="book-top">
@@ -13,7 +13,7 @@ const Book = ({ bookTitle, authors, bookCover, handlerOnchange }) => {
           }}
         ></div>
         <div className="book-shelf-changer">
-          <select onChange={handlerOnchange}>
+          <select onChange={(e) => handlerOnchange(book, e)}>
             <option value="none">Move to...</option>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>

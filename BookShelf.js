@@ -1,17 +1,14 @@
 import Book from "./Book";
 import PropTypes from "prop-types";
-const BookShelf = ({ bookShelfTitle, bookShelfId, books }) => {
-  const handlerOnchange = (e) => {
-    console.log(e.target.value);
-    const { value } = e.target;
-  };
-
+import { update } from "./BooksAPI";
+const BookShelf = ({ bookShelfTitle, bookShelfId, books, handlerOnchange }) => {
   const bookEl = books.map((book) => {
     return (
       book.shelf === bookShelfId && (
         <li key={book.id}>
           <Book
             handlerOnchange={handlerOnchange}
+            book={book}
             bookTitle={book.title}
             authors={book.authors}
             bookCover={book.imageLinks.thumbnail}
