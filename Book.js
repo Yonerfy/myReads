@@ -1,6 +1,15 @@
 import PropTypes from "prop-types";
 
-const Book = ({ bookTitle, authors, bookCover, handlerOnchange, book }) => {
+const Book = ({
+  bookTitle,
+  authors,
+  bookCover,
+  handlerOnchange,
+  book,
+  books,
+  setBooks,
+}) => {
+  console.log(books);
   return (
     <div className="book">
       <div className="book-top">
@@ -13,12 +22,24 @@ const Book = ({ bookTitle, authors, bookCover, handlerOnchange, book }) => {
           }}
         ></div>
         <div className="book-shelf-changer">
-          <select onChange={(e) => handlerOnchange(book, e)}>
-            <option value="none">Move to...</option>
-            <option value="currentlyReading">Currently Reading</option>
-            <option value="wantToRead">Want to Read</option>
-            <option value="read">Read</option>
-            <option value="none">None</option>
+          <select
+            onChange={(e) => {
+              handlerOnchange(book, e);
+              setBooks((prevState) => {
+                return prevState.map((stateBook) =>
+                  book.id === stateBook.id
+                    ? { ...stateBook, shelf: e.target.value }
+                    : { ...stateBook }
+                );
+              });
+            }}
+            value={book.shelf}
+          >
+            <option value={"none"}>Move to...</option>
+            <option value={"currentlyReading"}>Currently Reading</option>
+            <option value={"wantToRead"}>Want to Read</option>
+            <option value={"read"}>Read</option>
+            <option value={"none"}>None</option>
           </select>
         </div>
       </div>

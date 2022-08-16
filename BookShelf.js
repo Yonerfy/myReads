@@ -1,12 +1,20 @@
 import Book from "./Book";
 import PropTypes from "prop-types";
 import { update } from "./BooksAPI";
-const BookShelf = ({ bookShelfTitle, bookShelfId, books, handlerOnchange }) => {
+const BookShelf = ({
+  bookShelfTitle,
+  bookShelfId,
+  books,
+  handlerOnchange,
+  setBooks,
+}) => {
   const bookEl = books.map((book) => {
     return (
       book.shelf === bookShelfId && (
         <li key={book.id}>
           <Book
+            setBooks={setBooks}
+            books={books}
             handlerOnchange={handlerOnchange}
             book={book}
             bookTitle={book.title}

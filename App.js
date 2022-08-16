@@ -5,20 +5,21 @@ import { getAll, search, update } from "./BooksAPI";
 
 function App() {
   const [books, setBooks] = useState([]);
+  const [shelfName, setShelfName] = useState("");
+
   useEffect(() => {
-    getAll().then((data) => setBooks(data));
+    const getBooks = async () => {
+      const res = await getAll();
+      setBooks(res);
+    };
+    getBooks();
+    console.log("UseEffect ran");
   }, []);
-  console.log(books);
 
   const handlerOnchange = (book, e) => {
     const { value } = e.target;
 
-    const test = update(book, value);
-
-    test.then((data) => console.log(data));
-    test.then((data) => {
-      let { currentlyReading, wantToRead, read } = data;
-    });
+    update(book, value);
   };
   return (
     <div className="app">
