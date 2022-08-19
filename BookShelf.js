@@ -1,6 +1,6 @@
 import Book from "./Book";
 import PropTypes from "prop-types";
-import { update } from "./BooksAPI";
+
 const BookShelf = ({
   bookShelfTitle,
   bookShelfId,
@@ -11,17 +11,16 @@ const BookShelf = ({
   const bookEl = books.map((book) => {
     return (
       book.shelf === bookShelfId && (
-        <li key={book.id}>
-          <Book
-            setBooks={setBooks}
-            books={books}
-            handlerOnchange={handlerOnchange}
-            book={book}
-            bookTitle={book.title}
-            authors={book.authors}
-            bookCover={book.imageLinks.thumbnail}
-          />
-        </li>
+        <Book
+          key={book.id}
+          setBooks={setBooks}
+          books={books}
+          handlerOnchange={handlerOnchange}
+          book={book}
+          bookTitle={book.title}
+          authors={book.authors}
+          bookCover={book.imageLinks.thumbnail}
+        />
       )
     );
   });
@@ -38,6 +37,7 @@ const BookShelf = ({
 
 BookShelf.prototype = {
   books: PropTypes.array,
+  setBooks: PropTypes.func,
   bookShelfId: PropTypes.string,
   bookShelfTitle: PropTypes.string,
 };
