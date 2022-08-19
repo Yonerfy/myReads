@@ -6,10 +6,8 @@ const Book = ({
   bookCover,
   handlerOnchange,
   book,
-  books,
   setBooks,
 }) => {
-  console.log(books);
   return (
     <div className="book">
       <div className="book-top">
@@ -54,6 +52,8 @@ Book.prototype = {
   bookCover: PropTypes.string,
   authors: PropTypes.string,
   handlerOnchange: PropTypes.func,
+  setBooks: PropTypes.func,
+  book: PropTypes.object,
 };
 
 export default Book;
