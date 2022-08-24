@@ -29,6 +29,9 @@ When you navigate back to the main page from the search page, you should instant
 ## Installing and launching
 
 git clone "https://github.com/Yonerfy/myReads.git"
+
 cd MyReads
+
 npm install
+
 npm start
