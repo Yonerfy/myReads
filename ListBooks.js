@@ -1,8 +1,17 @@
 import BookShelf from "./BookShelf";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { getAll } from "./BooksAPI";
 
 const ListBooks = ({ books, setBooks, handlerOnchange }) => {
+  useEffect(() => {
+    const getBooks = async () => {
+      const res = await getAll();
+      setBooks(res);
+    };
+    getBooks();
+  }, [setBooks]);
   return (
     <div className="list-books">
       <div className="list-books-title">

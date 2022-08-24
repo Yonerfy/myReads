@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { getAll, search, update } from "./BooksAPI";
+import { getAll, update } from "./BooksAPI";
 import { Routes, Route } from "react-router-dom";
 import SearchPage from "./SearchPage";
 import ListBooks from "./ListBooks";
@@ -20,7 +20,6 @@ function App() {
     const { value } = e.target;
     update(book, value);
   };
-
   return (
     <div className="app">
       <Routes>

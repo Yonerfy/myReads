@@ -17,9 +17,9 @@ const BookShelf = ({
           books={books}
           handlerOnchange={handlerOnchange}
           book={book}
-          bookTitle={book.title}
+          bookTitle={book.title ? book.title : ""}
           authors={book.authors}
-          bookCover={book.imageLinks.thumbnail}
+          bookCover={book.imageLinks ? book.imageLinks.thumbnail : ""}
         />
       )
     );
