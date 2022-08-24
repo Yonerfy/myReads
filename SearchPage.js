@@ -18,22 +18,42 @@ const SearchPage = ({ books, handlerOnchange, setBooks }) => {
   const handlerOnchangeSearchBooks = (query) => {
     setQuery(query);
   };
-  console.log(booksQuery);
 
   const bookEl = Array.isArray(booksQuery)
-    ? booksQuery.map((book) => (
-        <Book
-          key={book.id}
-          setBooks={setBooks}
-          books={books}
-          handlerOnchange={handlerOnchange}
-          book={book}
-          bookTitle={book.title}
-          authors={book.authors}
-          bookCover={book.imageLinks ? book.imageLinks.thumbnail : ""}
-        />
-      ))
+    ? booksQuery.map((book) => {
+        const bookOnShelf = books.find((b) => b.id === book.id);
+        if (bookOnShelf) book.shelf = bookOnShelf.shelf;
+
+        return (
+          <Book
+            key={book.id}
+            setBooks={setBooks}
+            books={books}
+            handlerOnchange={handlerOnchange}
+            book={book}
+            bookTitle={book.title ? book.title : ""}
+            authors={book.authors}
+            bookCover={book.imageLinks ? book.imageLinks.thumbnail : ""}
+          />
+        );
+      })
     : "";
+
+  // getBooks();
+  // const bookEl = Array.isArray(booksQuery)
+  //   ? booksQuery.map((book) => (
+  //       <Book
+  //         key={book.id}
+  //         setBooks={setBooks}
+  //         books={books}
+  //         handlerOnchange={handlerOnchange}
+  //         book={book}
+  //         bookTitle={book.title ? book.title : ""}
+  //         authors={book.authors}
+  //         bookCover={book.imageLinks ? book.imageLinks.thumbnail : ""}
+  //       />
+  //     ))
+  //   : "";
   return (
     <div className="search-books">
       <div className="search-books-bar">
