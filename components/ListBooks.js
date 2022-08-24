@@ -2,7 +2,7 @@ import BookShelf from "./BookShelf";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
-import { getAll } from "./BooksAPI";
+import { getAll } from "../BooksAPI";
 
 const ListBooks = ({ books, setBooks, handlerOnchange }) => {
   useEffect(() => {
@@ -12,11 +12,13 @@ const ListBooks = ({ books, setBooks, handlerOnchange }) => {
     };
     getBooks();
   }, [setBooks]);
+
   return (
     <div className="list-books">
       <div className="list-books-title">
         <h1>MyReads</h1>
       </div>
+
       <div className="list-books-content">
         <BookShelf
           books={books}
@@ -25,6 +27,7 @@ const ListBooks = ({ books, setBooks, handlerOnchange }) => {
           bookShelfTitle="Currently Reading"
           bookShelfId="currentlyReading"
         />
+
         <BookShelf
           books={books}
           setBooks={setBooks}
@@ -32,6 +35,7 @@ const ListBooks = ({ books, setBooks, handlerOnchange }) => {
           bookShelfTitle="Want to Read"
           bookShelfId="wantToRead"
         />
+
         <BookShelf
           books={books}
           setBooks={setBooks}
@@ -39,6 +43,7 @@ const ListBooks = ({ books, setBooks, handlerOnchange }) => {
           bookShelfTitle="Read"
           bookShelfId="read"
         />
+
         <div className="open-search">
           <Link to="/SearchPage">Add a book</Link>
         </div>

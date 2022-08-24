@@ -19,6 +19,7 @@ const Book = ({
             backgroundImage: `url(${bookCover})`,
           }}
         ></div>
+
         <div className="book-shelf-changer">
           <select
             onChange={(e) => {
@@ -41,6 +42,7 @@ const Book = ({
           </select>
         </div>
       </div>
+
       <div className="book-title">{bookTitle}</div>
       <div className="book-authors">{authors}</div>
     </div>

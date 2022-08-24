@@ -17,9 +17,9 @@ const BookShelf = ({
           books={books}
           handlerOnchange={handlerOnchange}
           book={book}
-          bookTitle={book.title ? book.title : ""}
+          bookTitle={book.title || ""}
           authors={book.authors}
-          bookCover={book.imageLinks ? book.imageLinks.thumbnail : ""}
+          bookCover={book.imageLinks.thumbnail || ""}
         />
       )
     );
@@ -40,6 +40,7 @@ BookShelf.prototype = {
   setBooks: PropTypes.func,
   bookShelfId: PropTypes.string,
   bookShelfTitle: PropTypes.string,
+  handlerOnchange: PropTypes.func,
 };
 
 export default BookShelf;
